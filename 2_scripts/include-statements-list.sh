@@ -1,17 +1,18 @@
 #!/bin/bash
 
 ###############################################################################
+###
 ### This bash script creates a report listing the include statements
 ### contained in each file in your nginx configuration directory.
 ### It outputs the "calling" configuration file (that is, a file
 ### which contains an include statement) followed by a list of the
-### include statements with their line numbers.  report to
-### a file called include-statements.txt in your nginx configuration
-### directory.
+### include statements with their line numbers.
+### 
 ###############################################################################
 
-### TO USE:  1. Change the DIR path below to the path where your nginx
-###             configuration files are located. Default is 'etc/nginx'.
+### TO USE:  1. Change the DIR variable below to the path where your nginx
+###             configuration files are located. Default is 'etc/nginx/'.
+###             Be sure to include the trailing '/'.
 ###	     2. Remember to chmod +x this file
 
 ## Configuration section
@@ -22,13 +23,15 @@ DIR='/etc/nginx/'
 ## End configuration section
 
 ## Report Header
-printf "### Include Statments List ###\n\n"
 fmt <<'EOF'
+###   Include Statement List   ###
 
 This is a list of the include statements found in each calling
 configuration file (that is, a file which contains an include statement)
-followed by a list of the include statements with their line numbers.
+followed by a list of the include statements with their line numbers.  
+It is sorted by include filename (with relative path) then by line number.
 A # in front of an include indicates it is disabled.
+
 EOF
 
 ## Process files
@@ -51,12 +54,12 @@ find $DIR -type f -name '*.conf' -print0 | \
 		# An awk statement splits the line and puts it in the correct
 		# order for the report.
 		# Lines are then sorted by two keys, the first key is
-		# the calling file and the second key is the line number.
+		# the include file and the second key is the line number.
 		# Then it's formatted to columns.
 			egrep -n 'include.*;' $line | \
 			sed 's/\#\s\+include/\#include/g' | \
 			sed 's/( {1,50}|\t{1,10})/\:/g' | \
 			awk -F '[:]+' '{print $2 " " $3 " " "Line " $1}' | \
-			sort -k 1,3 -k 4n | \
+			sort -k 2,3 -k 4n | \
 			column -t
 done
