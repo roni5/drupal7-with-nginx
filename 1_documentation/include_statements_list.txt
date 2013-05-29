@@ -1,10 +1,33 @@
 ### Include Statments List ###
 
+An "include" statement is an nginx directive in the core module.
+See http://wiki.nginx.org/CoreModule#include.  Please see the notes
+there regarding relative path.
 
-This is a list of the include statements found in each calling
-configuration file (that is, a file which contains an include
-statement) followed by a list of the include statements with their
-line numbers.  A # in front of an include indicates it is disabled.
+The relative path for include statements is relative to the path
+of nginx.conf, not the prefix path.  In Debian 7, nginx.conf is
+located at /etc/nginx/ so all paths are relative to /etc/nginx/.
+
+For purposes of documentation, a configuration file that uses an
+include statement is termed a "calling" file. There are four calling
+files in this configuration:
+
+	1. nginx.conf
+
+	2. fastcgi.conf
+
+	3. apps/drupal/drupal.conf
+
+	4. sites-available/example.com.conf
+
+This is a list of the include statements found in each calling file
+followed by the line numbers.  A # in front of an include stattement
+indicates it is disabled.
+
+Note that the same include statement can appear more than once in
+a calling file.  For example, in example.com.conf, the same include
+statement appears in both the http and https server sections.
+
 
 ./apps/drupal/drupal.conf
 include   apps/drupal/fastcgi_drupal.conf;          Line  166
