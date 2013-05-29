@@ -1,0 +1,45 @@
+### Include Statments List ###
+
+
+This is a list of the include statements found in each calling
+configuration file (that is, a file which contains an include
+statement) followed by a list of the include statements with their
+line numbers.  A # in front of an include indicates it is disabled.
+
+./apps/drupal/drupal.conf
+include   apps/drupal/fastcgi_drupal.conf;          Line  166
+include   apps/drupal/fastcgi_drupal.conf;          Line  21
+include   apps/drupal/fastcgi_drupal.conf;          Line  40
+include   apps/drupal/hotlinking_protection.conf;   Line  54
+#include  apps/drupal/microcache_fcgi_auth.conf;    Line  194
+#include  apps/drupal/microcache_fcgi_auth.conf;    Line  211
+include   apps/drupal/fastcgi_drupal.conf;          Line  188
+include   apps/drupal/fastcgi_no_args_drupal.conf;  Line  205
+include   apps/drupal/microcache_fcgi.conf;         Line  192
+include   apps/drupal/microcache_fcgi.conf;         Line  209
+
+./fastcgi.conf
+include  fastcgi_params;  Line  2
+
+./nginx.conf
+include  blacklist.conf;                     Line  127
+include  fastcgi.conf;                       Line  22
+include  fastcgi_microcache_zone.conf;       Line  133
+include  map_block_http_methods.conf;        Line  117
+include  map_cache.conf;                     Line  130
+include  mime.types;                         Line  18
+include  nginx_status_allowed_hosts.conf;    Line  124
+include  php_fpm_status_allowed_hosts.conf;  Line  121
+include  sites-enabled/*;                    Line  136
+include  upstream_phpcgi_unix.conf;          Line  114
+
+./sites-available/example.com.conf
+#include  apps/drupal/drupal_install.conf;          Line  68
+include   apps/drupal/drupal.conf;                  Line  59
+include   apps/drupal/drupal.conf;                  Line  166
+include   apps/drupal/drupal_upload_progress.conf;  Line  73
+include   apps/drupal/drupal_upload_progress.conf;  Line  172
+include   apps/drupal/nginx_status_vhost.conf;      Line  81
+include   apps/drupal/nginx_status_vhost.conf;      Line  180
+include   apps/drupal/php_fpm_status_vhost.conf;    Line  77
+include   apps/drupal/php_fpm_status_vhost.conf;    Line  176

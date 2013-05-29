@@ -1,0 +1,38 @@
+# File listing of /etc/nginx/:
+
+fastcgi_params
+koi-utf
+koi-win
+mime.types
+nginx.conf
+win-utf 
+
+apps/drupal:
+drupal.conf
+drupal_install.conf
+drupal_upload_progress.conf
+fastcgi_drupal.conf 
+fastcgi_no_args_drupal.conf
+hotlinking_protection.conf  
+microcache_fcgi_auth.conf
+microcache_fcgi.conf
+nginx_status_vhost.conf
+php_fpm_status_vhost.conf
+
+./main:
+blacklist.conf
+fastcgi_microcache_zone.conf
+fastcgi.conf
+map_block_http_methods.conf
+map_cache.conf
+nginx_status_allowed_hosts.conf
+php_fpm_status_allowed_hosts.conf
+upstream_phpcgi_unix.conf
+
+./sites-available:
+000-default
+example.com.conf
+
+Note:  It is not necessary for the documentation directory
+to be placed on the server so it is not included here.
+
