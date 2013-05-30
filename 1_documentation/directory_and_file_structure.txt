@@ -1,13 +1,24 @@
+### nginx configuration files
+
 # File listing of /etc/nginx/:
 
+blacklist.conf
+fastcgi_microcache_zone.conf
 fastcgi_params
+fastcgi.conf
 koi-utf
 koi-win
+map_block_http_methods.conf
+map_cache.conf
 mime.types
+nginx_status_allowed_hosts.conf
 nginx.conf
+php_fpm_status_allowed_hosts.conf
+upstream_phpcgi_unix.conf
 win-utf 
 
-apps/drupal:
+# File listing of apps/drupal/:
+
 drupal.conf
 drupal_install.conf
 drupal_upload_progress.conf
@@ -19,20 +30,16 @@ microcache_fcgi.conf
 nginx_status_vhost.conf
 php_fpm_status_vhost.conf
 
-./main:
-blacklist.conf
-fastcgi_microcache_zone.conf
-fastcgi.conf
-map_block_http_methods.conf
-map_cache.conf
-nginx_status_allowed_hosts.conf
-php_fpm_status_allowed_hosts.conf
-upstream_phpcgi_unix.conf
-
-./sites-available:
+# File listing of sites-available/:
 000-default
 example.com.conf
 
-Note:  It is not necessary for the documentation directory
-to be placed on the server so it is not included here.
 
+### extra files
+
+# File listing of 1_documentation
+directory_and_file_structure.txt
+include_statements_list.txt
+
+# File listing of 2_scripts
+include-statements-list.sh
