@@ -30,16 +30,16 @@ statement appears in both the http and https server sections.
 
 
 ./apps/drupal/drupal.conf
-include   apps/drupal/fastcgi_drupal.conf;          Line  166
 include   apps/drupal/fastcgi_drupal.conf;          Line  21
 include   apps/drupal/fastcgi_drupal.conf;          Line  40
-include   apps/drupal/hotlinking_protection.conf;   Line  54
-#include  apps/drupal/microcache_fcgi_auth.conf;    Line  194
-#include  apps/drupal/microcache_fcgi_auth.conf;    Line  211
+include   apps/drupal/fastcgi_drupal.conf;          Line  166
 include   apps/drupal/fastcgi_drupal.conf;          Line  188
 include   apps/drupal/fastcgi_no_args_drupal.conf;  Line  205
+#include  apps/drupal/hotlinking_protection.conf;   Line  54
 include   apps/drupal/microcache_fcgi.conf;         Line  192
 include   apps/drupal/microcache_fcgi.conf;         Line  209
+#include  apps/drupal/microcache_fcgi_auth.conf;    Line  194
+#include  apps/drupal/microcache_fcgi_auth.conf;    Line  211
 
 ./fastcgi.conf
 include  fastcgi_params;  Line  2
@@ -57,12 +57,12 @@ include  sites-enabled/*;                    Line  136
 include  upstream_phpcgi_unix.conf;          Line  114
 
 ./sites-available/example.com.conf
-#include  apps/drupal/drupal_install.conf;          Line  68
-include   apps/drupal/drupal.conf;                  Line  59
-include   apps/drupal/drupal.conf;                  Line  166
-include   apps/drupal/drupal_upload_progress.conf;  Line  73
-include   apps/drupal/drupal_upload_progress.conf;  Line  172
-include   apps/drupal/nginx_status_vhost.conf;      Line  81
-include   apps/drupal/nginx_status_vhost.conf;      Line  180
-include   apps/drupal/php_fpm_status_vhost.conf;    Line  77
-include   apps/drupal/php_fpm_status_vhost.conf;    Line  176
+include   apps/drupal/drupal.conf;                  Line  63
+include   apps/drupal/drupal.conf;                  Line  170
+#include  apps/drupal/drupal_install.conf;          Line  72
+include   apps/drupal/drupal_upload_progress.conf;  Line  77
+include   apps/drupal/drupal_upload_progress.conf;  Line  176
+include   apps/drupal/nginx_status_vhost.conf;      Line  85
+include   apps/drupal/nginx_status_vhost.conf;      Line  184
+include   apps/drupal/php_fpm_status_vhost.conf;    Line  81
+include   apps/drupal/php_fpm_status_vhost.conf;    Line  180
