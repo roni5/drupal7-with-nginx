@@ -4,5 +4,6 @@ old-nginx/
 */*/unused/
 .DS_Store
 my_notes.txt
-*home.sh
-*home.pl
+*home*.sh
+*home*.pl
+*home*.txt
