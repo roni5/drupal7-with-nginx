@@ -1,0 +1,213 @@
+### Variables List ###
+
+This is a list of the variables found in the configuration files.
+A # at the beginnning of the line indicates it is disabled.  A ##
+at the beginning of the line indicates it is part of a comment.
+Note that the same variable can appear more than once in a file and
+may appear in more than one file.
+
+Variables list (alphabetical)
+$bad_bot
+$bad_referer
+$binary_remote_addr
+$cache_uid
+$content_length
+$content_type
+$document_root
+$document_uri
+$dont_show_fpm_status
+$dont_show_nginx_status
+$fastcgi_script_name
+$http_cookie
+$http_referer
+$http_user_agent
+$https
+$invalid_referer
+$nginx_version
+$no_auth_cache
+$no_cache
+$not_allowed_method
+$query_string
+$remote_addr
+$remote_port
+$request_method
+$request_uri
+$scheme
+$server_addr
+$server_name
+$server_port
+$server_protocol
+$session_id
+$upload_form_uri
+$upstream_cache_status
+$uri
+
+Variable: $bad_bot
+blacklist.conf	Line 8  map $http_user_agent $bad_bot {
+sites-available/example.com.conf	Line 38  if ($bad_bot) {
+sites-available/example.com.conf	Line 153  if ($bad_bot) {
+
+Variable: $bad_referer
+blacklist.conf	Line 16  map $http_referer $bad_referer {
+blacklist.conf	Line 22  geo $bad_referer {
+sites-available/example.com.conf	Line 42  if ($bad_referer) {
+sites-available/example.com.conf	Line 157  if ($bad_referer) {
+
+Variable: $binary_remote_addr
+nginx.conf	Line 39  limit_conn_zone $binary_remote_addr zone=arbeit:10m;
+
+Variable: $cache_uid
+apps/drupal/microcache_fcgi_auth.conf	Line 4  fastcgi_cache_key $cache_uid@$scheme$host$request_uri;
+map_cache.conf	Line 14  map $http_cookie $cache_uid {
+
+Variable: $content_length
+apps/drupal/fastcgi_drupal.conf	Line 6  fastcgi_param CONTENT_LENGTH $content_length;
+apps/drupal/fastcgi_no_args_drupal.conf	Line 6  fastcgi_param  CONTENT_LENGTH     $content_length;
+fastcgi_params	Line 5  fastcgi_param CONTENT_LENGTH $content_length;
+
+Variable: $content_type
+apps/drupal/fastcgi_drupal.conf	Line 5  fastcgi_param CONTENT_TYPE $content_type;
+apps/drupal/fastcgi_no_args_drupal.conf	Line 5  fastcgi_param  CONTENT_TYPE       $content_type;
+fastcgi_params	Line 4  fastcgi_param CONTENT_TYPE $content_type;
+
+Variable: $document_root
+apps/drupal/fastcgi_drupal.conf	Line 11  fastcgi_param DOCUMENT_ROOT $document_root;
+apps/drupal/fastcgi_drupal.conf	Line 24  fastcgi_param SCRIPT_FILENAME $document_root/index.php;
+apps/drupal/fastcgi_no_args_drupal.conf	Line 11  fastcgi_param  DOCUMENT_ROOT      $document_root;
+apps/drupal/fastcgi_no_args_drupal.conf	Line 24  fastcgi_param SCRIPT_FILENAME $document_root/index.php;
+fastcgi_params	Line 10  fastcgi_param DOCUMENT_ROOT $document_root;
+fastcgi_params	Line 21  fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+
+Variable: $document_uri
+apps/drupal/fastcgi_drupal.conf	Line 10  fastcgi_param DOCUMENT_URI $document_uri;
+apps/drupal/fastcgi_no_args_drupal.conf	Line 10  fastcgi_param  DOCUMENT_URI       $document_uri;
+fastcgi_params	Line 9  fastcgi_param DOCUMENT_URI $document_uri;
+
+Variable: $dont_show_fpm_status
+apps/drupal/php_fpm_status_vhost.conf	Line 22  if ($dont_show_fpm_status) {
+apps/drupal/php_fpm_status_vhost.conf	Line 31  if ($dont_show_fpm_status) {
+apps/drupal/php_fpm_status_vhost.conf	Line 39  if ($dont_show_fpm_status) {
+apps/drupal/php_fpm_status_vhost.conf	Line 47  if ($dont_show_fpm_status) {
+apps/drupal/php_fpm_status_vhost.conf	Line 55  if ($dont_show_fpm_status) {
+apps/drupal/php_fpm_status_vhost.conf	Line 63  if ($dont_show_fpm_status) {
+php_fpm_status_allowed_hosts.conf	Line 4  geo $dont_show_fpm_status {
+
+Variable: $dont_show_nginx_status
+apps/drupal/nginx_status_vhost.conf	Line 6  if ($dont_show_nginx_status) {
+nginx_status_allowed_hosts.conf	Line 4  geo $dont_show_nginx_status {
+
+Variable: $fastcgi_script_name
+fastcgi_params	Line 7  fastcgi_param SCRIPT_NAME $fastcgi_script_name;
+fastcgi_params	Line 21  fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+
+Variable: $http_cookie
+map_cache.conf	Line 8  map $http_cookie $no_cache {
+map_cache.conf	Line 14  map $http_cookie $cache_uid {
+
+Variable: $http_referer
+blacklist.conf	Line 16  map $http_referer $bad_referer {
+
+Variable: $http_user_agent
+blacklist.conf	Line 8  map $http_user_agent $bad_bot {
+
+Variable: $https
+apps/drupal/fastcgi_drupal.conf	Line 26  fastcgi_param HTTPS $https if_not_empty;
+fastcgi_params	Line 27  fastcgi_param HTTPS $https if_not_empty;
+
+Variable: $invalid_referer
+apps/drupal/hotlinking_protection.conf	Line 7  if ($invalid_referer) {
+
+Variable: $nginx_version
+apps/drupal/fastcgi_drupal.conf	Line 15  fastcgi_param SERVER_SOFTWARE nginx/$nginx_version;
+apps/drupal/fastcgi_no_args_drupal.conf	Line 15  fastcgi_param  SERVER_SOFTWARE    nginx/$nginx_version;
+fastcgi_params	Line 14  fastcgi_param SERVER_SOFTWARE nginx/$nginx_version;
+
+Variable: $no_auth_cache
+apps/drupal/microcache_fcgi_auth.conf	Line 20  # fastcgi_cache_bypass $no_auth_cache;
+apps/drupal/microcache_fcgi_auth.conf	Line 21  # fastcgi_no_cache $no_auth_cache;
+
+Variable: $no_cache
+apps/drupal/microcache_fcgi.conf	Line 22  fastcgi_cache_bypass $no_cache;
+apps/drupal/microcache_fcgi.conf	Line 23  fastcgi_no_cache $no_cache;
+map_cache.conf	Line 8  map $http_cookie $no_cache {
+
+Variable: $not_allowed_method
+map_block_http_methods.conf	Line 4  map $request_method $not_allowed_method {
+sites-available/example.com.conf	Line 48  if ($not_allowed_method) {
+sites-available/example.com.conf	Line 163  if ($not_allowed_method) {
+
+Variable: $query_string
+fastcgi_params	Line 2  fastcgi_param QUERY_STRING $query_string;
+
+Variable: $remote_addr
+apps/drupal/fastcgi_drupal.conf	Line 17  fastcgi_param REMOTE_ADDR $remote_addr;
+apps/drupal/fastcgi_no_args_drupal.conf	Line 17  fastcgi_param  REMOTE_ADDR        $remote_addr;
+fastcgi_params	Line 16  fastcgi_param REMOTE_ADDR $remote_addr;
+
+Variable: $remote_port
+apps/drupal/fastcgi_drupal.conf	Line 18  fastcgi_param REMOTE_PORT $remote_port;
+apps/drupal/fastcgi_no_args_drupal.conf	Line 18  fastcgi_param  REMOTE_PORT        $remote_port;
+fastcgi_params	Line 17  fastcgi_param REMOTE_PORT $remote_port;
+
+Variable: $request_method
+apps/drupal/fastcgi_drupal.conf	Line 4  fastcgi_param REQUEST_METHOD $request_method;
+apps/drupal/fastcgi_no_args_drupal.conf	Line 4  fastcgi_param  REQUEST_METHOD     $request_method;
+fastcgi_params	Line 3  fastcgi_param REQUEST_METHOD $request_method;
+map_block_http_methods.conf	Line 4  map $request_method $not_allowed_method {
+
+Variable: $request_uri
+apps/drupal/fastcgi_drupal.conf	Line 9  fastcgi_param REQUEST_URI $request_uri;
+apps/drupal/fastcgi_no_args_drupal.conf	Line 9  fastcgi_param  REQUEST_URI        $request_uri;
+apps/drupal/microcache_fcgi.conf	Line 7  fastcgi_cache_key $scheme$host$request_uri;
+apps/drupal/microcache_fcgi_auth.conf	Line 4  fastcgi_cache_key $cache_uid@$scheme$host$request_uri;
+fastcgi_params	Line 8  fastcgi_param REQUEST_URI $request_uri;
+sites-available/example.com.conf	Line 18  return 301 $scheme://example.com$request_uri;
+sites-available/example.com.conf	Line 111  return 301 $scheme://example.com$request_uri;
+
+Variable: $scheme
+apps/drupal/microcache_fcgi.conf	Line 7  fastcgi_cache_key $scheme$host$request_uri;
+apps/drupal/microcache_fcgi_auth.conf	Line 4  fastcgi_cache_key $cache_uid@$scheme$host$request_uri;
+sites-available/example.com.conf	Line 18  return 301 $scheme://example.com$request_uri;
+sites-available/example.com.conf	Line 111  return 301 $scheme://example.com$request_uri;
+
+Variable: $server_addr
+apps/drupal/fastcgi_drupal.conf	Line 19  fastcgi_param SERVER_ADDR $server_addr;
+apps/drupal/fastcgi_no_args_drupal.conf	Line 19  fastcgi_param  SERVER_ADDR        $server_addr;
+fastcgi_params	Line 18  fastcgi_param SERVER_ADDR $server_addr;
+
+Variable: $server_name
+apps/drupal/fastcgi_drupal.conf	Line 21  fastcgi_param SERVER_NAME $server_name;
+apps/drupal/fastcgi_no_args_drupal.conf	Line 21  fastcgi_param  SERVER_NAME        $server_name;
+fastcgi_params	Line 20  fastcgi_param SERVER_NAME $server_name;
+
+Variable: $server_port
+apps/drupal/fastcgi_drupal.conf	Line 20  fastcgi_param SERVER_PORT $server_port;
+apps/drupal/fastcgi_no_args_drupal.conf	Line 20  fastcgi_param  SERVER_PORT        $server_port;
+fastcgi_params	Line 19  fastcgi_param SERVER_PORT $server_port;
+
+Variable: $server_protocol
+apps/drupal/fastcgi_drupal.conf	Line 12  fastcgi_param SERVER_PROTOCOL $server_protocol;
+apps/drupal/fastcgi_no_args_drupal.conf	Line 12  fastcgi_param  SERVER_PROTOCOL    $server_protocol;
+fastcgi_params	Line 11  fastcgi_param SERVER_PROTOCOL $server_protocol;
+
+Variable: $session_id
+map_cache.conf	Line 16  ~SESS[[:alnum:]]+=(?<session_id>[[:graph:]]+) $session_id;
+
+Variable: $upload_form_uri
+apps/drupal/drupal_upload_progress.conf	Line 12  rewrite ^ $upload_form_uri?X-Progress-ID=$upload_id;
+
+Variable: $upstream_cache_status
+apps/drupal/microcache_fcgi.conf	Line 25  add_header X-Micro-Cache $upstream_cache_status;
+apps/drupal/microcache_fcgi_auth.conf	Line 23  add_header X-Micro-Cache $upstream_cache_status;
+
+Variable: $uri
+apps/drupal/drupal.conf	Line 58  try_files $uri @drupal;
+apps/drupal/drupal.conf	Line 69  try_files $uri @drupal;
+apps/drupal/drupal.conf	Line 81  try_files $uri @drupal;
+apps/drupal/drupal.conf	Line 178  ## First we try the URI and relay to the /index.php?q=$uri&$args if not found.
+apps/drupal/drupal.conf	Line 179  try_files $uri @drupal;
+apps/drupal/drupal.conf	Line 251  try_files $uri @drupal-no-args;
+apps/drupal/drupal.conf	Line 256  try_files $uri @drupal-no-args;
+apps/drupal/drupal.conf	Line 261  try_files $uri @drupal-no-args;
+apps/drupal/fastcgi_drupal.conf	Line 3  fastcgi_param QUERY_STRING q=$uri&$args;
+apps/drupal/fastcgi_no_args_drupal.conf	Line 3  fastcgi_param  QUERY_STRING       q=$uri;
