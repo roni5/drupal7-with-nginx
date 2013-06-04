@@ -1,0 +1,62 @@
+### Locations List ###
+
+This is a list of the locations found in each file followed by the
+line numbers.
+
+
+./apps/drupal/drupal.conf
+Line 24  	location / {
+Line 29  	location ^~ /system/files/ {
+Line 42  	location ^~ /sites/default/files/private/ {
+Line 49  	location ^~ /system/files_force/ {
+Line 65  	location ~* /files/styles/ {
+Line 78  	location ^~ /sites/default/files/advagg_css/ {
+Line 79  	location ~* /sites/default/files/advagg_css/css_[[:alnum:]]+\.css$ {
+Line 90  	location ^~ /sites/default/files/advagg_js/ {
+Line 91  	location ~* /sites/default/files/advagg_js/js_[[:alnum:]]+\.js$ {
+Line 102  	location ~* ^.+\.(?:css|cur|js|jpg|jpeg|gif|htc|ico|png|html|xml)$ {
+Line 116  	location ~* ^.+\.(?:pdf|pptx?)$ {
+Line 124  	location ^~ /sites/default/files/audio/mp3 {
+Line 125  	location ~* ^/sites/default/files/audio/mp3/.*\.mp3$ {
+Line 135  	location ^~ /sites/default/files/audio/ogg {
+Line 136  	location ~* ^/sites/default/files/audio/ogg/.*\.ogg$ {
+Line 151  	location ^~ /sites/default/files/video/flv {
+Line 152  	location ~* ^/sites/default/files/video/flv/.*\.flv$ {
+Line 162  	location ~* ^/sites/default/files/video/mp4/.*\.(?:mp4|mov)$ {
+Line 170  	location ~* ^/sites/default/files/audio/m4a/.*\.m4a$ {
+Line 178  	location ^~ /help/ {
+Line 179  	location ~* ^/help/[^/]*/README\.txt$ {
+Line 190  	location ~* ^(?:.+\.(?:htaccess|make|txt|engine|inc|info|install|module|profile|po|pot|sh|.*sql|test|theme|tpl(?:\.php)?|xtmpl)|code-style\.pl|/Entries.*|/Repository|/Root|/Tag|/Template)$ {
+Line 202  	location @drupal {
+Line 220  	location @drupal-no-args {
+Line 234  	location ^~ /.bzr {
+Line 238  	location ^~ /.git {
+Line 242  	location ^~ /.hg {
+Line 246  	location ^~ /.svn {
+Line 250  	location ^~ /.cvs {
+Line 255  	location ^~ /patches {
+Line 260  	location ^~ /backup {
+Line 265  	location = /robots.txt {
+Line 273  	location = /rss.xml {
+Line 280  	location = /sitemap.xml {
+Line 287  	location = /favicon.ico {
+Line 293  	location @empty {
+Line 299  	location ~* ^.+\.php$ {
+
+./apps/drupal/drupal_install.conf
+Line 13  	location = /install.php {
+
+./apps/drupal/drupal_upload_progress.conf
+Line 12  	location ~ (?<upload_form_uri>.*)/x-progress-id:(?<upload_id>\d*) {
+Line 19  	location ^~ /progress {
+
+./apps/drupal/nginx_status_vhost.conf
+Line 5  	location /nginx_status {
+
+./apps/drupal/php_fpm_status_vhost.conf
+Line 22  	location = /fpm-status-www1 {
+Line 31  	location = /ping-www1 {
+Line 39  	location = /fpm-status-www2 {
+Line 47  	location = /ping-www2 {
+Line 55  	location = /fpm-status-www3 {
+Line 63  	location = /ping-www3 {
