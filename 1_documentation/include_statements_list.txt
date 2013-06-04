@@ -30,39 +30,39 @@ statement appears in both the http and https server sections.
 
 
 ./apps/drupal/drupal.conf
-include   apps/drupal/fastcgi_drupal.conf;          Line  21
-include   apps/drupal/fastcgi_drupal.conf;          Line  40
-include   apps/drupal/fastcgi_drupal.conf;          Line  166
-include   apps/drupal/fastcgi_drupal.conf;          Line  188
-include   apps/drupal/fastcgi_no_args_drupal.conf;  Line  205
-#include  apps/drupal/hotlinking_protection.conf;   Line  54
-include   apps/drupal/microcache_fcgi.conf;         Line  192
-include   apps/drupal/microcache_fcgi.conf;         Line  209
-#include  apps/drupal/microcache_fcgi_auth.conf;    Line  194
-#include  apps/drupal/microcache_fcgi_auth.conf;    Line  211
+include   apps/drupal/fastcgi_drupal.conf;          Line  32
+include   apps/drupal/fastcgi_drupal.conf;          Line  52
+include   apps/drupal/fastcgi_drupal.conf;          Line  182
+include   apps/drupal/fastcgi_drupal.conf;          Line  204
+include   apps/drupal/fastcgi_no_args_drupal.conf;  Line  223
+#include  apps/drupal/hotlinking_protection.conf;   Line  68
+include   apps/drupal/microcache_fcgi.conf;         Line  208
+include   apps/drupal/microcache_fcgi.conf;         Line  227
+#include  apps/drupal/microcache_fcgi_auth.conf;    Line  210
+#include  apps/drupal/microcache_fcgi_auth.conf;    Line  229
 
 ./fastcgi.conf
 include  fastcgi_params;  Line  2
 
 ./nginx.conf
-include  blacklist.conf;                     Line  127
-include  fastcgi.conf;                       Line  22
-include  fastcgi_microcache_zone.conf;       Line  133
-include  map_block_http_methods.conf;        Line  117
-include  map_cache.conf;                     Line  130
-include  mime.types;                         Line  18
-include  nginx_status_allowed_hosts.conf;    Line  124
-include  php_fpm_status_allowed_hosts.conf;  Line  121
-include  sites-enabled/*;                    Line  136
-include  upstream_phpcgi_unix.conf;          Line  114
+include  blacklist.conf;                     Line  131
+include  fastcgi.conf;                       Line  26
+include  fastcgi_microcache_zone.conf;       Line  137
+include  map_block_http_methods.conf;        Line  121
+include  map_cache.conf;                     Line  134
+include  mime.types;                         Line  22
+include  nginx_status_allowed_hosts.conf;    Line  128
+include  php_fpm_status_allowed_hosts.conf;  Line  125
+include  sites-enabled/*;                    Line  140
+include  upstream_phpcgi_unix.conf;          Line  118
 
 ./sites-available/example.com.conf
-include   apps/drupal/drupal.conf;                  Line  63
-include   apps/drupal/drupal.conf;                  Line  170
-#include  apps/drupal/drupal_install.conf;          Line  72
-include   apps/drupal/drupal_upload_progress.conf;  Line  77
-include   apps/drupal/drupal_upload_progress.conf;  Line  176
-include   apps/drupal/nginx_status_vhost.conf;      Line  85
-include   apps/drupal/nginx_status_vhost.conf;      Line  184
-include   apps/drupal/php_fpm_status_vhost.conf;    Line  81
-include   apps/drupal/php_fpm_status_vhost.conf;    Line  180
+include   apps/drupal/drupal.conf;                  Line  72
+include   apps/drupal/drupal.conf;                  Line  179
+#include  apps/drupal/drupal_install.conf;          Line  81
+include   apps/drupal/drupal_upload_progress.conf;  Line  86
+include   apps/drupal/drupal_upload_progress.conf;  Line  185
+include   apps/drupal/nginx_status_vhost.conf;      Line  94
+include   apps/drupal/nginx_status_vhost.conf;      Line  193
+include   apps/drupal/php_fpm_status_vhost.conf;    Line  90
+include   apps/drupal/php_fpm_status_vhost.conf;    Line  189
