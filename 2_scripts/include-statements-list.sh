@@ -10,7 +10,7 @@
 ### 
 ###############################################################################
 
-### TO USE:  1. Change the DIR variable below to the path where your nginx
+### TO USE:  1. Change the CONFDIR variable below to the path where your nginx
 ###             configuration files are located. Default is 'etc/nginx/'.
 ###             Be sure to include the trailing '/'.
 ###	     2. Remember to chmod +x this file
@@ -18,7 +18,7 @@
 ## Configuration section
 
 # nginx configuration directory location
-DIR='/etc/nginx/'
+CONFDIR='/etc/nginx/'
 
 ## End configuration section
 
@@ -35,11 +35,11 @@ A # in front of an include indicates it is disabled.
 EOF
 
 ## Process files
-# Finds all .conf files in DIR and subdirectories that contain an
+# Finds all .conf files in CONFDIR and subdirectories that contain an
 # include statement.
 # Then splits on ':' using awk and uniqs first field to give
 # the list of calling files.
-find $DIR -type f -name '*.conf' -print0 | \
+find $CONFDIR -type f -name '*.conf' -print0 | \
 	xargs -0 egrep -n 'include.*;' | \
 	awk -F '[:]+' '{print $1}' | uniq | \
 	while read line

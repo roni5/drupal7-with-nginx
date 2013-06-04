@@ -5,7 +5,7 @@
 ### It outputs the filename followed by a list of the
 ### variables and the line the variable appears in with their line numbers.
 
-### TO USE:  1. Change the DIR path below to the path where your nginx
+### TO USE:  1. Change the CONFDIR path below to the path where your nginx
 ###             configuration files are located. Default is 'etc/nginx'.
 ###	         2. Remember to chmod +x this file
 
