@@ -24,7 +24,7 @@ DIR='/etc/nginx/'
 
 ## Report Header
 fmt <<'EOF'
-###   Include Statement List   ###
+###   Include Statements List   ###
 
 This is a list of the include statements found in each calling
 configuration file (that is, a file which contains an include statement)
