@@ -1,0 +1,50 @@
+### Directory and File Listing ###
+
+This is a file listinsg of all nginx configuratio fils as well as
+a listing of the extra files included (documentation and scripts).
+
+Note:  In Debian 7, nginx.conf is located at /etc/nginx/ so all
+paths are relative to /etc/nginx/.
+
+File listing of /etc/nginx/:
+blacklist.conf
+fastcgi.conf
+fastcgi_microcache_zone.conf
+fastcgi_params
+koi-utf
+koi-win
+map_block_http_methods.conf
+map_cache.conf
+mime.types
+nginx.conf
+nginx_status_allowed_hosts.conf
+php_fpm_status_allowed_hosts.conf
+upstream_phpcgi_unix.conf
+win-utf
+
+File listing of apps/drupal/:
+drupal.conf
+drupal_install.conf
+drupal_upload_progress.conf
+fastcgi_drupal.conf
+fastcgi_no_args_drupal.conf
+hotlinking_protection.conf
+microcache_fcgi.conf
+microcache_fcgi_auth.conf
+nginx_status_vhost.conf
+php_fpm_status_vhost.conf
+
+File listing of sites-available/:
+000-default
+example.com.conf
+
+### Extra files
+File listing of documentation/:
+includes-list.txt
+locations-list.txt
+structure.txt
+variables-list.txt
+
+File listing of scripts/:
+includes-list.sh
+variables-list.sh

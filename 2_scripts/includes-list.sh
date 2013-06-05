@@ -2,11 +2,11 @@
 
 ###############################################################################
 ###
-### This bash script creates a report listing the include statements
+### This bash script creates a report listing the include directives
 ### contained in each file in your nginx configuration directory.
 ### It outputs the "calling" configuration file (that is, a file
-### which contains an include statement) followed by a list of the
-### include statements with their line numbers.
+### which contains an include directive) followed by a list of the
+### include directives with their line numbers.
 ### 
 ###############################################################################
 
@@ -24,11 +24,11 @@ CONFDIR='/etc/nginx/'
 
 ## Report Header
 fmt <<'EOF'
-###   Include Statements List   ###
+###   Include Directives List   ###
 
-This is a list of the include statements found in each calling
-configuration file (that is, a file which contains an include statement)
-followed by a list of the include statements with their line numbers.  
+This is a list of the include directives found in each calling
+configuration file (that is, a file which contains an include directive)
+followed by a list of the include directives with their line numbers.  
 It is sorted by include filename (with relative path) then by line number.
 A # in front of an include indicates it is disabled.
 
@@ -36,7 +36,7 @@ EOF
 
 ## Process files
 # Finds all .conf files in CONFDIR and subdirectories that contain an
-# include statement.
+# include directive.
 # Then splits on ':' using awk and uniqs first field to give
 # the list of calling files.
 find $CONFDIR -type f -name '*.conf' -print0 | \
@@ -47,7 +47,7 @@ find $CONFDIR -type f -name '*.conf' -print0 | \
 		# print calling file for report
    			printf "\n"
 			echo "$line"
-		# prints out include statements for each of the calling files
+		# prints out include directives for each of the calling files
 		# two sed statements deal with white space and '#'
 		# so that result is in form of
 		# callingfile.conf:Line#:(#)include:includefile.

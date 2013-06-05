@@ -1,15 +1,15 @@
-### Include Statments List ###
+### Include Directives List ###
 
-An "include" statement is an nginx directive in the core module.
+An "include" directive is an nginx directive in the core module.
 See http://wiki.nginx.org/CoreModule#include.  Please see the notes
 there regarding relative path.
 
-The relative path for include statements is relative to the path
+The relative path for include directives is relative to the path
 of nginx.conf, not the prefix path.  In Debian 7, nginx.conf is
 located at /etc/nginx/ so all paths are relative to /etc/nginx/.
 
 For purposes of documentation, a configuration file that uses an
-include statement is termed a "calling" file. There are four calling
+include directive is termed a "calling" file. There are four calling
 files in this configuration:
 
 	1. nginx.conf
@@ -20,13 +20,13 @@ files in this configuration:
 
 	4. sites-available/example.com.conf
 
-This is a list of the include statements found in each calling file
+This is a list of the include directives found in each calling file
 followed by the line numbers.  A # in front of an include stattement
 indicates it is disabled.
 
-Note that the same include statement can appear more than once in
+Note that the same include directive can appear more than once in
 a calling file.  For example, in example.com.conf, the same include
-statement appears in both the http and https server sections.
+directive appears in both the http and https server sections.
 
 
 ./apps/drupal/drupal.conf
