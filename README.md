@@ -11,7 +11,7 @@ Customized nginx configuration for running druapl from [drupal-with-nginx](https
 ## Background
 Perusio's configuration is masterful - a great learning tool, security conscious and adaptable to many situations.  I am very grateful for his work.  It has saved me a tremendous amount of time and provided me with a working knowledge of nginx, Drupal and PHP-FPM.  
 
-When working with Perusio's configuration, I found that it took me quite a bit of time to tailor it specifically to my needs.  I started with one relatively small VPS and then had to repeat the process for another VPS I acquired.  What I needed was a stock configuration for my needs so I could save time.  This is the result.
+When working with Perusio's configuration, I found that it took me quite a bit of time to go through the files and tailor it specifically to my needs.  I started with one relatively small VPS and then had to repeat the process for another VPS I acquired a year later (by which time I had a murky recollection of what I had done the first time).  What I needed was a stock configuration for my needs with so I could save time.  This is the result.
 
 ##Changes from Perusio's Configuration
 
@@ -160,15 +160,15 @@ The following configuration files **must** be changed for this configuration to 
 4. Check log paths.  Change as necessary.
 5. Check SSL paths. Change as necessary.
 
-Note that there are four server blocks - two for http and two for https. The first server block redirects www.example.com to example.com.  
+Note that there are four server blocks - two for http and two for https. The first server block for each redirects www.example.com to example.com.  
 
-#### blacklist.conf
+#### `blacklist.conf`
 1.  Review list of user agents to be blocked. Change as necessary.
 2.  Review list of referrers to be blocked.  Change as necessary.
 3.  Review list of hosts exempt from referrer checking.  Change as necessary.
 
-#### map_block_http_methods.conf
-1.  Review and add methods if necessary.
+#### `map_block_http_methods.conf`
+1.  Review and change as necessary.
 
 
 ##Options
@@ -197,7 +197,6 @@ These options are disabled by default.
    Strict Transport Security and adjust time if necessary.
    Disabled by default.
 
-####nginx.conf
-
+####`nginx.conf`
 1. **Clickjacking Protection:** - Choose only one of the add-header lines.
    One is for sites not using frames and the other is for sites using frames.
