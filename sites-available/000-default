@@ -4,8 +4,7 @@
 ### http://nginx.org/en/docs/http/request_processing.html#how_to_prevent_undefined_server_names.
 
 ### IMPLEMENT
-### Replace IPv6 address with your IPv6 address or disable.
-### IMPLEMENT END
+### Mandatory: 1. Replace IPv6 address with your IPv6 address or disable.
 
 server {
     listen 80 default_server; # IPv4
