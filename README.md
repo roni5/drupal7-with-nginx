@@ -151,7 +151,11 @@ See `apps/drupal/drupal.conf` and `apps/drupal/drupal_upload_progress.conf` for 
 The following configuration files **must** be changed for this configuration to work.  In addition, a review of certain settings is strongly suggested.
 
 ####PHP5-FPM & `upstream_phpcgi_unix.conf`
-1. Change your PHP5-FPM pool configuration to match the pool configuration in `upstream_phpcgi_unix.conf` which uses three pools, www1, www2 and www3 and unix sockets.  Alternatively, change `upstream_phpcgi_unix.conf` to match your existing PHP5-FPM configuration. 
+Change your PHP5-FPM pool configuration to match the pool configuration in `upstream_phpcgi_unix.conf` which uses three pools, www1, www2 and www3 and unix sockets.  Alternatively, change `upstream_phpcgi_unix.conf` to match your existing PHP5-FPM configuration. 
+
+####Microcaching
+Microcaching requires the presence of /var/cache/nginx/microcache.  This directory is not created by default.  You must create it and grant the appropriate permissions to the nginx user (in Debian 7 it's www-data).
+  If you want the microcache in another location, be sure to change it in `fastcgi_microcache_zone.conf`.
 
 ####`/sites-available/example.com.conf`
 1. Replace example.com with your domain name.
@@ -168,8 +172,10 @@ Note that there are four server blocks - two for http and two for https. The fir
 3.  Review list of hosts exempt from referrer checking.  Change as necessary.
 
 #### `map_block_http_methods.conf`
-1.  Review and change as necessary.
+Review and change as necessary.
 
+#### Symlinks to `sites-enabled/`
+Just a reminder to make sure you add the necessary symlinks to from `sites-available/` to `sites-enabled/`.  Note that the `sites-enabled/default` symlink is already linked to `sites-available/default` on a standard installation.
 
 ##Options
 
@@ -187,7 +193,7 @@ These options are disabled by default.
 ####`/apps/drupal/drupal.conf`
 1. **Hotlinking Protection:** Enable the include directive for hotlinking protection.
 	a.    `apps/drupal/hotlinking_protection.conf` - change the directive valid_referers to include your domain name.
-2. **FastCGI Microcache** - microcaching for anonymous users is enabled by default.  You can switch to microcahing for authenticated users by disabling the include directive for anonymous microcaching and enabling the other. Enable only one!
+2. **FastCGI Microcache** - microcaching for anonymous users is enabled by default.  You can switch to microcahing for authenticated users by disabling the include directive for anonymous microcaching and enabling the other. Enable only one!  Make sure you've created the directory and given appropriate permissions to the nginx user.  See note on Microcaching above.
 3. **AIO File System Support** - XFS or ext3 or similar - ext3 is enabled by default (differs from perusio's config where XFS enabled by default).  Switch to XFS by disabling ext3 and enabling XFS in the MP3 and Ogg/Vorbis section.  There are two entries so be sure to change it in both places.
 
 ####`/apps/drupal/microcache_fcgi.conf` & `/apps/drupal/microcache_fcgi_auth.conf`
@@ -198,5 +204,5 @@ These options are disabled by default.
    Disabled by default.
 
 ####`nginx.conf`
-1. **Clickjacking Protection:** - Choose only one of the add-header lines.
+**Clickjacking Protection:** - Choose only one of the add-header lines.
    One is for sites not using frames and the other is for sites using frames.
