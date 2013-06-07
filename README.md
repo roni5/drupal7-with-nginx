@@ -153,8 +153,8 @@ The following configuration files **must** be changed for this configuration to 
 ####PHP5-FPM & `upstream_phpcgi_unix.conf`
 Change your PHP5-FPM pool configuration to match the pool configuration in `upstream_phpcgi_unix.conf` which uses three pools, www1, www2 and www3 and unix sockets.  Alternatively, change `upstream_phpcgi_unix.conf` to match your existing PHP5-FPM configuration. 
 
-####Microcaching
-Microcaching requires the presence of /var/cache/nginx/microcache.  This directory is not created by default.  You must create it and grant the appropriate permissions to the nginx user (in Debian 7 it's www-data).
+####Microcaching & `fastcgi_microcache_zone.conf`
+Microcaching requires the presence of /var/cache/nginx/microcache.  This directory is not created by default.  You **must** create it and grant the appropriate permissions to the nginx user (in Debian 7 it's www-data).
   If you want the microcache in another location, be sure to change it in `fastcgi_microcache_zone.conf`.
 
 ####`/sites-available/example.com.conf`
@@ -204,5 +204,5 @@ These options are disabled by default.
    Disabled by default.
 
 ####`nginx.conf`
-**Clickjacking Protection:** - Choose only one of the add-header lines.
+**Clickjacking Protection:** - Choose **only one** of the add-header lines.
    One is for sites not using frames and the other is for sites using frames.
