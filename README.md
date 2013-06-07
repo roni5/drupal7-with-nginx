@@ -116,7 +116,7 @@ The configuration files provided by the dotdeb nginx-extras package are (followe
 * `naxsi.rules` - unused
 * `naxsi_core.rules` - unused
 * `nginx.conf` - changed
-* `proxy_params` - unused (renamed and changed to `reverse_proxy.conf` in perusio's configuration)
+* `proxy_params` - unused (changed and renamed to `reverse_proxy.conf` in perusio's configuration)
 * `scgi_params` - unused
 * `uwsgi_params` - unused
 * `win-utf` - unchanged
