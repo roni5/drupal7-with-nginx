@@ -27,7 +27,38 @@ When working with Perusio's configuration, I found that it took me quite a bit o
   4. Added comments to include files to reference the calling file. (TO DO)
   5. Added comments relating to implementation and installation.
   6. Expanded user agents blocked in `blacklist.conf`.
+  7. Added variables_hash section in `nginx.conf`. 
+  
+  		## Uncomment to increase variables_hash_max_size if you start getting 
+    	## [emerg] could not build the variables_hash, you should increase 
+    	## either variables_hash_max_size: 512 or 
+    	## variables_hash_bucket_size: 64
+    	## You only need to uncomment one. I chose to increase
+    	## variables_hash_max_size to 1024 as this was recommended
+    	## in nginx forum by developers.
+    	## See this forum topic and responses
+    	## http://forum.nginx.org/read.php?2,192277,192286#msg-192286
+    	## See http://wiki.nginx.org/HttpCoreModule#variables_hash_bucket_size
+    	## variables_hash_bucket_size was added for completeness but not
+    	## changed from default.
+    	#variables_hash_max_size 1024; # default 512
+    	#variables_hash_bucket_size 64; # default is 64
+  
+  8. Changed IPv6 listen directive in `000-default` from a specific address to a wildcard address.
+  
+    	listen [::]:80 ipv6only=on;
 
+  
+  9. Changed IPv6 listen directives in `example.com.conf` from a specific address to a wildcard address and removed 'ipv6only=on;' because you can only specify socket options once on an IPv6 wildcard address and that's been done in `000-default`.
+
+		listen [::]80;
+		
+	and
+	
+		listen [::]:443 ssl spdy;
+
+	See [listen directive](http://nginx.org/en/docs/http/ngx_http_core_module.html#listen) and this [bug report](http://trac.nginx.org/nginx/ticket/364). 
+	
 ## Nginx Configuration Concepts
 ### The Include Directive
 Nginx provides a realtively easy way of managing complex configurations through the **[include directive](http://wiki.nginx.org/CoreModule#include)**.  In brief, by using the include directive, you can read another file into the configuration.  This allows you to reuse parts of the configuration where needed without having to retype the configuration directives again, lets you make changes in one file rather than changing the same thing in multiple places, reducing the chance of error, and keeps file size manageable. 
@@ -159,7 +190,7 @@ Microcaching requires the presence of /var/cache/nginx/microcache.  This directo
 
 ####`/sites-available/example.com.conf`
 1. Replace example.com with your domain name.
-2. Replace IPv6 address with your IPv6 address or disable.
+2. Replace IPv6 address with your IPv6 address if you want to listen on a specific interface or disable altogether if not using IPv6.
 3. Check root path. Change as necessary.
 4. Check log paths.  Change as necessary.
 5. Check SSL paths. Change as necessary.
