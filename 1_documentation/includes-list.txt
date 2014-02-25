@@ -18,14 +18,14 @@ files in this configuration:
 
 	3. apps/drupal/drupal.conf
 
-	4. sites-available/example.com.conf
+	4. sites-available/example.domain.conf
 
 This is a list of the include directives found in each calling file
 followed by the line numbers.  A # in front of an include stattement
 indicates it is disabled.
 
 Note that the same include directive can appear more than once in
-a calling file.  For example, in example.com.conf, the same include
+a calling file.  For example, in example.domain.conf, the same include
 directive appears in both the http and https server sections.
 
 
@@ -56,7 +56,7 @@ include  php_fpm_status_allowed_hosts.conf;  Line  125
 include  sites-enabled/*;                    Line  140
 include  upstream_phpcgi_unix.conf;          Line  118
 
-./sites-available/example.com.conf
+./sites-available/example.domain.conf
 include   apps/drupal/drupal.conf;                  Line  72
 include   apps/drupal/drupal.conf;                  Line  179
 #include  apps/drupal/drupal_install.conf;          Line  81

@@ -36,7 +36,7 @@ php_fpm_status_vhost.conf
 
 File listing of sites-available/:
 000-default
-example.com.conf
+example.domain.conf
 
 ### Extra files
 File listing of documentation/:

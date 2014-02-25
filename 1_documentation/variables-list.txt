@@ -44,14 +44,14 @@ $uri
 
 Variable: $bad_bot
 blacklist.conf	Line 8  map $http_user_agent $bad_bot {
-sites-available/example.com.conf	Line 38  if ($bad_bot) {
-sites-available/example.com.conf	Line 153  if ($bad_bot) {
+sites-available/example.domain.conf	Line 38  if ($bad_bot) {
+sites-available/example.domain.conf	Line 153  if ($bad_bot) {
 
 Variable: $bad_referer
 blacklist.conf	Line 16  map $http_referer $bad_referer {
 blacklist.conf	Line 22  geo $bad_referer {
-sites-available/example.com.conf	Line 42  if ($bad_referer) {
-sites-available/example.com.conf	Line 157  if ($bad_referer) {
+sites-available/example.domain.conf	Line 42  if ($bad_referer) {
+sites-available/example.domain.conf	Line 157  if ($bad_referer) {
 
 Variable: $binary_remote_addr
 nginx.conf	Line 39  limit_conn_zone $binary_remote_addr zone=arbeit:10m;
@@ -133,8 +133,8 @@ map_cache.conf	Line 8  map $http_cookie $no_cache {
 
 Variable: $not_allowed_method
 map_block_http_methods.conf	Line 4  map $request_method $not_allowed_method {
-sites-available/example.com.conf	Line 48  if ($not_allowed_method) {
-sites-available/example.com.conf	Line 163  if ($not_allowed_method) {
+sites-available/example.domain.conf	Line 48  if ($not_allowed_method) {
+sites-available/example.domain.conf	Line 163  if ($not_allowed_method) {
 
 Variable: $query_string
 fastcgi_params	Line 2  fastcgi_param QUERY_STRING $query_string;
@@ -161,14 +161,14 @@ apps/drupal/fastcgi_no_args_drupal.conf	Line 9  fastcgi_param  REQUEST_URI      
 apps/drupal/microcache_fcgi.conf	Line 7  fastcgi_cache_key $scheme$host$request_uri;
 apps/drupal/microcache_fcgi_auth.conf	Line 4  fastcgi_cache_key $cache_uid@$scheme$host$request_uri;
 fastcgi_params	Line 8  fastcgi_param REQUEST_URI $request_uri;
-sites-available/example.com.conf	Line 18  return 301 $scheme://example.com$request_uri;
-sites-available/example.com.conf	Line 111  return 301 $scheme://example.com$request_uri;
+sites-available/example.domain.conf	Line 18  return 301 $scheme://example.domain$request_uri;
+sites-available/example.domain.conf	Line 111  return 301 $scheme://example.domain$request_uri;
 
 Variable: $scheme
 apps/drupal/microcache_fcgi.conf	Line 7  fastcgi_cache_key $scheme$host$request_uri;
 apps/drupal/microcache_fcgi_auth.conf	Line 4  fastcgi_cache_key $cache_uid@$scheme$host$request_uri;
-sites-available/example.com.conf	Line 18  return 301 $scheme://example.com$request_uri;
-sites-available/example.com.conf	Line 111  return 301 $scheme://example.com$request_uri;
+sites-available/example.domain.conf	Line 18  return 301 $scheme://example.domain$request_uri;
+sites-available/example.domain.conf	Line 111  return 301 $scheme://example.domain$request_uri;
 
 Variable: $server_addr
 apps/drupal/fastcgi_drupal.conf	Line 19  fastcgi_param SERVER_ADDR $server_addr;
