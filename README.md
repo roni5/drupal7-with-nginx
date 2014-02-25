@@ -49,7 +49,7 @@ When working with Perusio's configuration, I found that it took me quite a bit o
     	listen [::]:80 ipv6only=on;
 
   
-  9. Changed IPv6 listen directives in `example.com.conf` from a specific address to a wildcard address and removed 'ipv6only=on;' because you can only specify socket options once on an IPv6 wildcard address and that's been done in `000-default`.
+  9. Changed IPv6 listen directives in `example.domain.conf` from a specific address to a wildcard address and removed 'ipv6only=on;' because you can only specify socket options once on an IPv6 wildcard address and that's been done in `000-default`.
 
 		listen [::]80;
 		
@@ -91,7 +91,7 @@ There are four calling files in this configuration:
   1. nginx.conf
   2. fastcgi.conf
   3. apps/drupal/drupal.conf
-  4. sites-available/example.com.conf
+  4. sites-available/example.domain.conf
 
 See the file `1_documentation/includes-list.txt` for a complete listing of the include directives for each calling file.  It also contains a reference to the line numbers of the calling file where those include directives appear.  
 
@@ -112,7 +112,7 @@ An example of two locations from `apps/drupal/drupal.conf`:
 	    try_files /favicon.ico @empty;
 	}
 
-In this instance, for the URI www.example.com/favicon.ico, nginx will first look for the favicon.ico file at the site root level and serve it.  If not found, it will then proceed to the named location, @empty, below.  The configuration directives in @empty return an empty gif. A named location is one with an '@' sign. Note the above location uses a named location with its configuration directives.
+In this instance, for the URI www.example.domain/favicon.ico, nginx will first look for the favicon.ico file at the site root level and serve it.  If not found, it will then proceed to the named location, @empty, below.  The configuration directives in @empty return an empty gif. A named location is one with an '@' sign. Note the above location uses a named location with its configuration directives.
 
 	## Return an in memory 1x1 transparent GIF.
 	location @empty {
@@ -188,19 +188,22 @@ Change your PHP5-FPM pool configuration to match the pool configuration in `upst
 Microcaching requires the presence of /var/cache/nginx/microcache.  This directory is not created by default.  You **must** create it and grant the appropriate permissions to the nginx user (in Debian 7 it's www-data).
   If you want the microcache in another location, be sure to change it in `fastcgi_microcache_zone.conf`.
 
-####`/sites-available/example.com.conf`
-1. Replace example.com with your domain name.
+####`/sites-available/example.domain.conf`
+1. Replace example.domain with your domain name.
 2. Replace IPv6 address with your IPv6 address if you want to listen on a specific interface or disable altogether if not using IPv6.
 3. Check root path. Change as necessary.
 4. Check log paths.  Change as necessary.
 5. Check SSL paths. Change as necessary.
 
-Note that there are four server blocks - two for http and two for https. The first server block for each redirects www.example.com to example.com.  
+Note that there are four server blocks - two for http and two for https. The first server block for each redirects www.example.domain to example.domain.  
 
 #### `blacklist.conf`
 1.  Review list of user agents to be blocked. Change as necessary.
 2.  Review list of referrers to be blocked.  Change as necessary.
 3.  Review list of hosts exempt from referrer checking.  Change as necessary.
+4.  NOTE 1: The list of user agents and list of referrers are based on MY preferences.  You might want to remove some of the user-agents I've blocked.  None of my sites are "business" sites so I've blocked some of the more aggressive SEO bots/spiders.
+5.  NOTE 2:  curl is blocked by default.  If you are testing/debugging, you might want to remove curl temporarily.
+6.  NOTE 3:  Added blocking of empty user-agent string.  I noted in my logs that every log line that had an empty user-agent string was a hacking attempt.  I turned it on for my sites and have been monitoring and haven't seen any legitimate requests with an empty user-agent string for a month now.  Not sure if this is for everyone so it is NOT enabled by default.  I will be monitoring and investigating further as it has come to my attention that, for example, some Android applications do not set a user-agent and one must be manually entered.
 
 #### `map_block_http_methods.conf`
 Review and change as necessary.
@@ -212,7 +215,7 @@ Just a reminder to make sure you add the necessary symlinks to from `sites-avail
 
 ###Options - Disabled by Default
 These options are disabled by default.
-####`/sites-available/example.com.conf`
+####`/sites-available/example.domain.conf`
 
 1. **New Druapl Installation:**  If installing a new Drupal site, enable include directive for drupal_install.conf. 
 	a. If you want to enable auth_basic for installation, see `apps/drupal/drupal_install.conf` and `.htpasswd-users` to enable  authentication if desired). Default is disabled.
