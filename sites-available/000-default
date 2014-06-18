@@ -8,7 +8,8 @@
 
 server {
     listen 80 default_server; # IPv4
-    ## Socket options can only be specified once.
+    ## Socket options can only be specified once, hence the different
+    ## address for the 'default' server.
     listen [::]:80 default_server ipv6only=on; # IPv6
 
     server_name _;
