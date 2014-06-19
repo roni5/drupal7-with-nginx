@@ -17,8 +17,8 @@ When working with Perusio's configuration, I found that it took me quite a bit o
 
 ###General
   1.  No proxy/loadbalance configuration - all files and the stanzas relating to same in the remaining configuration files were removed.
-  2.  Comments removed - removed comments relating to versions of nginx below 1.4.
-  3.  Comments added - Added comments to each file, where necessary to reflect choices about the configuration and steps needed for implementation.
+  2.  Comments removed - removed some comments relating to versions of nginx below 1.4.
+  3.  Comments added - Added comments to each file where necessary to reflect choices about the configuration and steps needed for implementation.
 
 ###Specific
   1. PHP5-FPM uses unix sockets only.  Removed configuration file for use of tcp. Changed pool names.
@@ -58,6 +58,7 @@ When working with Perusio's configuration, I found that it took me quite a bit o
 		listen [::]:443 ssl spdy;
 
 	See [listen directive](http://nginx.org/en/docs/http/ngx_http_core_module.html#listen) and this [bug report](http://trac.nginx.org/nginx/ticket/364). 
+	 
 	
 ## Nginx Configuration Concepts
 ### The Include Directive
@@ -65,7 +66,7 @@ Nginx provides a realtively easy way of managing complex configurations through 
 
 For example, `apps/drupal/drupal.conf` contains four include statements in various blocks for `fastcgi.conf` which includes 13 lines of directives and comments.  You can see that it is more efficient to save these repeated directives to a file and use an include directive rather than adding an additional 52 lines of comments and directives to the `apps/drupal/drupal.conf`.  Any changes only need to be made in one place.
 
-An example of an include directive found in `nginx.conf`:
+Examples of an include directive found in `nginx.conf`:
 
 	## Microcache zone definition for FastCGI.
     include fastcgi_microcache_zone.conf;
@@ -131,7 +132,7 @@ Besides the `README.md` file, documentation is provided in the `1_documentation`
 * `locations-list.txt` - a list of named locations
 * `variables-list.txt` - a list of variables used
 
-The documentation provided here is documentation relating to this version of perusio's configuration.  See perusio's [README.md](https://github.com/perusio/drupal-with-nginx/blob/D7/README.md) for more detailed documentation regarding the configuration itself. You should consider mandatory a reading perusio's [README.md](https://github.com/perusio/drupal-with-nginx/blob/D7/README.md).
+The documentation provided here relates to this version of perusio's configuration.  See perusio's [README.md](https://github.com/perusio/drupal-with-nginx/blob/D7/README.md) for more detailed documentation regarding the configuration itself. You should consider mandatory a reading of perusio's [README.md](https://github.com/perusio/drupal-with-nginx/blob/D7/README.md).
 
 ### Scripts
 Several scripts that generate lists of include directives, locations and variables.  These scripts were used to generate the files in `1_docmentation`.  The scripts can be handy when trying to understand how perusio's configuration fits together and for troubleshooting. See caveat above.
@@ -191,7 +192,7 @@ Microcaching requires the presence of /var/cache/nginx/microcache.  This directo
 ####`/sites-available/example.domain.conf`
 1. Replace example.domain with your domain name.
 2. Replace IPv6 address with your IPv6 address if you want to listen on a specific interface or disable altogether if not using IPv6.
-3. Check root path. Change as necessary.
+3. Check root path for web. Change as necessary.
 4. Check log paths.  Change as necessary.
 5. Check SSL paths. Change as necessary.
 
@@ -209,7 +210,7 @@ Note that there are four server blocks - two for http and two for https. The fir
 Review and change as necessary.
 
 #### Symlinks to `sites-enabled/`
-Just a reminder to make sure you add the necessary symlinks to from `sites-available/` to `sites-enabled/`.  Note that the `sites-enabled/default` symlink is already linked to `sites-available/default` on a standard installation.
+Just a reminder to make sure you add the necessary symlinks from `sites-available/` to `sites-enabled/`.  Note that the `sites-enabled/default` symlink is already linked to `sites-available/default` on a standard installation.
 
 ##Options
 
